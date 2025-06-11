@@ -13,8 +13,11 @@ cmake = "0.1.54"
 anyhow = "1"
 
 [dev-dependencies]
-image = "0.25"
-imageproc = "0.25"
+opencv = { version = "0.94.4", features = [
+    "clang-runtime",
+    "imgcodecs",
+    "imgproc",
+] }
 
 [features]
 default = []
