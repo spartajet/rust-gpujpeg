@@ -6,7 +6,8 @@ use rust_gpujpeg::*;
 fn main() -> Result<(), Box<dyn Error>> {
     let cu_stream = std::ptr::null_mut::<CUstream_st>();
 
-    let param = unsafe { gpujpeg_default_parameters() };
+    let mut param = unsafe { gpujpeg_default_parameters() };
+    param.quality = 90; // Set quality to 90
     let param_ptr = &param as *const gpujpeg_parameters as *mut gpujpeg_parameters;
 
     let mut param_image = unsafe { gpujpeg_default_image_parameters() };
