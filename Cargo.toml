@@ -2,6 +2,10 @@
 name = "rust-gpujpeg"
 version = "0.1.0"
 edition = "2024"
+description = "Rust bindings for GPU JPEG library"
+license-file = "LICENSE"
+repository = "https://github.com/spartajet/rust-gpujpeg"
+homepage = "https://github.com/spartajet/rust-gpujpeg"
 
 [dependencies]
 anyhow = "1"

@@ -76,17 +76,22 @@ pub type intmax_t = ::std::os::raw::c_longlong;
 pub type uintmax_t = ::std::os::raw::c_ulonglong;
 pub const gpujpeg_color_space_GPUJPEG_NONE: gpujpeg_color_space = 0;
 pub const gpujpeg_color_space_GPUJPEG_RGB: gpujpeg_color_space = 1;
-#[doc = "< limited-range YCbCr BT.601"]
+
+///limited-range YCbCr BT.601
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_BT601: gpujpeg_color_space = 2;
-#[doc = "< full-range YCbCr BT.601"]
+
+/// GPUJPEG_YCBCR_BT601
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_BT601_256LVLS: gpujpeg_color_space = 3;
-#[doc = "< @ref GPUJPEG_YCBCR_BT601_256LVLS"]
+/// limited-range YCbCr JPEG
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_JPEG: gpujpeg_color_space = 3;
 #[doc = "< limited-range YCbCr BT.709"]
+/// GPUJPEG_YCBCR_BT709
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_BT709: gpujpeg_color_space = 4;
 #[doc = "< @ref GPUJPEG_YCBCR_BT709"]
+/// GPUJPEG_YCBCR_BT709_256LVLS
 pub const gpujpeg_color_space_GPUJPEG_YCBCR: gpujpeg_color_space = 4;
 #[doc = "< @deprecated will be removed soon (is this ever needed?), define ENABLE_YUV to enable pre/post processors"]
+
 pub const gpujpeg_color_space_GPUJPEG_YUV: gpujpeg_color_space = 5;
 #[doc = " Color spaces for JPEG codec"]
 pub type gpujpeg_color_space = ::std::os::raw::c_int;
