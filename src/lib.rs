@@ -26,3 +26,7 @@ unsafe impl Sync for GpujpegEncoderInputWarapper {}
 pub struct GpujpegEncoderWarpper(pub *mut gpujpeg_encoder);
 unsafe impl Send for GpujpegEncoderWarpper {}
 unsafe impl Sync for GpujpegEncoderWarpper {}
+
+pub struct GpujpegOpenglTextureWarapper(pub *mut gpujpeg_opengl_texture);
+unsafe impl Send for GpujpegOpenglTextureWarapper {}
+unsafe impl Sync for GpujpegOpenglTextureWarapper {}
