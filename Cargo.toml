@@ -4,3 +4,21 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+anyhow = "1"
+log = "0.4"
+
+[build-dependencies]
+bindgen = "0.71.1"
+cmake = "0.1.54"
+anyhow = "1"
+
+[dev-dependencies]
+opencv = { version = "0.94.4", features = [
+    "clang-runtime",
+    "imgcodecs",
+    "imgproc",
+] }
+
+[features]
+default = []
+generate-bindings = []
