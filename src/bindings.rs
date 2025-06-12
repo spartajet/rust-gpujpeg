@@ -84,35 +84,38 @@ pub const gpujpeg_color_space_GPUJPEG_YCBCR_BT601: gpujpeg_color_space = 2;
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_BT601_256LVLS: gpujpeg_color_space = 3;
 /// limited-range YCbCr JPEG
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_JPEG: gpujpeg_color_space = 3;
-#[doc = "< limited-range YCbCr BT.709"]
+/// limited-range YCbCr BT.709
 /// GPUJPEG_YCBCR_BT709
 pub const gpujpeg_color_space_GPUJPEG_YCBCR_BT709: gpujpeg_color_space = 4;
-#[doc = "< @ref GPUJPEG_YCBCR_BT709"]
+/// @ref GPUJPEG_YCBCR_BT709
 /// GPUJPEG_YCBCR_BT709_256LVLS
 pub const gpujpeg_color_space_GPUJPEG_YCBCR: gpujpeg_color_space = 4;
-#[doc = "< @deprecated will be removed soon (is this ever needed?), define ENABLE_YUV to enable pre/post processors"]
+/// @deprecated will be removed soon (is this ever needed?), define ENABLE_YUV to enable pre/post processors
 
 pub const gpujpeg_color_space_GPUJPEG_YUV: gpujpeg_color_space = 5;
-#[doc = " Color spaces for JPEG codec"]
+/// Color spaces for JPEG codec
 pub type gpujpeg_color_space = ::std::os::raw::c_int;
 pub const gpujpeg_pixel_format_GPUJPEG_PIXFMT_NONE: gpujpeg_pixel_format = -1;
-#[doc = " 8bit unsigned samples, 1 component"]
+/// 8bit unsigned samples, 1 component
 pub const gpujpeg_pixel_format_GPUJPEG_U8: gpujpeg_pixel_format = 0;
-#[doc = " 8bit unsigned samples, 3 components, 4:4:4 sampling,\n sample order: comp#0 comp#1 comp#2, interleaved"]
+/// 8bit unsigned samples, 3 components, 4:4:4 sampling,
+/// sample order: comp#0 comp#1 comp#2, interleaved
 pub const gpujpeg_pixel_format_GPUJPEG_444_U8_P012: gpujpeg_pixel_format = 1;
-#[doc = " 8bit unsigned samples, 3 components, 4:4:4, planar"]
+/// 8bit unsigned samples, 3 components, 4:4:4, planar
 pub const gpujpeg_pixel_format_GPUJPEG_444_U8_P0P1P2: gpujpeg_pixel_format = 2;
-#[doc = " 8bit unsigned samples, 3 components, 4:2:2,\n order of samples: comp#1 comp#0 comp#2 comp#0, interleaved"]
+/// 8bit unsigned samples, 3 components, 4:2:2,
+/// order of samples: comp#1 comp#0 comp#2 comp#0, interleaved
 pub const gpujpeg_pixel_format_GPUJPEG_422_U8_P1020: gpujpeg_pixel_format = 3;
-#[doc = " 8bit unsigned samples, planar, 3 components, 4:2:2, planar"]
+/// 8bit unsigned samples, planar, 3 components, 4:2:2, planar
 pub const gpujpeg_pixel_format_GPUJPEG_422_U8_P0P1P2: gpujpeg_pixel_format = 4;
-#[doc = " 8bit unsigned samples, planar, 3 components, 4:2:0, planar"]
+/// 8bit unsigned samples, planar, 3 components, 4:2:0, planar
 pub const gpujpeg_pixel_format_GPUJPEG_420_U8_P0P1P2: gpujpeg_pixel_format = 5;
-#[doc = " 8bit unsigned samples, 3 or 4 components, each pixel padded to 32bits\n with optional alpha or unused, 4:4:4(:4) sampling, interleaved"]
+/// 8bit unsigned samples, 3 or 4 components, each pixel padded to 32bits
+/// with optional alpha or unused, 4:4:4(:4) sampling, interleaved
 pub const gpujpeg_pixel_format_GPUJPEG_4444_U8_P0123: gpujpeg_pixel_format = 6;
-#[doc = " Pixel format for input/output image data."]
+/// Pixel format for input/output image data.
 pub type gpujpeg_pixel_format = ::std::os::raw::c_int;
-#[doc = " Sampling factor for color component in JPEG format"]
+/// Sampling factor for color component in JPEG format
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_component_sampling_factor {
@@ -137,40 +140,44 @@ pub struct CUstream_st {
 }
 pub type cudaStream_t = *mut CUstream_st;
 unsafe extern "C" {
-    #[doc = " @return runtime version of the GPUJPEG library"]
+    /// # return
+    /// runtime version of the GPUJPEG library
     pub fn gpujpeg_version() -> ::std::os::raw::c_int;
 }
+
 unsafe extern "C" {
-    #[doc = " @return text representation of GPUJPEG version number"]
+    /// # return
+    /// text representation of GPUJPEG version number
     pub fn gpujpeg_version_to_string(
         version: ::std::os::raw::c_int,
     ) -> *const ::std::os::raw::c_char;
 }
 unsafe extern "C" {
-    #[doc = " @return current time in seconds"]
+    /// # return
+    /// current time in seconds
     pub fn gpujpeg_get_time() -> f64;
 }
-#[doc = " Device info for one device"]
+/// Device info for one device
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_device_info {
-    #[doc = " Device id"]
+    /// Device id
     pub id: ::std::os::raw::c_int,
-    #[doc = " Device name"]
+    /// Device name
     pub name: [::std::os::raw::c_char; 256usize],
-    #[doc = " Compute capability major version"]
+    /// Compute capability major version
     pub cc_major: ::std::os::raw::c_int,
-    #[doc = " Compute capability minor version"]
+    /// Compute capability minor version
     pub cc_minor: ::std::os::raw::c_int,
-    #[doc = " Amount of global memory"]
+    /// Amount of global memory
     pub global_memory: usize,
-    #[doc = " Amount of constant memory"]
+    /// Amount of constant memory
     pub constant_memory: usize,
-    #[doc = " Amount of shared memory"]
+    /// Amount of shared memory
     pub shared_memory: usize,
-    #[doc = " Number of registers per block"]
+    /// Number of registers per block
     pub register_count: ::std::os::raw::c_int,
-    #[doc = " Number of multiprocessors"]
+    /// Number of multiprocessors
     pub multiprocessor_count: ::std::os::raw::c_int,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -196,13 +203,13 @@ const _: () = {
     ["Offset of field: gpujpeg_device_info::multiprocessor_count"]
         [::std::mem::offset_of!(gpujpeg_device_info, multiprocessor_count) - 300usize];
 };
-#[doc = " Device info for all devices"]
+/// Device info for one device
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_devices_info {
-    #[doc = " Number of devices"]
+    /// Number of devices
     pub device_count: ::std::os::raw::c_int,
-    #[doc = " Device info for each"]
+    /// Device info for each
     pub device: [gpujpeg_device_info; 10usize],
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -215,58 +222,88 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_devices_info, device) - 8usize];
 };
 unsafe extern "C" {
-    #[doc = " Get information about available devices\n\n @return devices info"]
+    /// Get information about available devices
+    ///
+    /// # return
+    /// devices info
     pub fn gpujpeg_get_devices_info() -> gpujpeg_devices_info;
 }
 unsafe extern "C" {
-    #[doc = " Print information about available devices\n\n @return 0  if success\n @return -1 for error (eg. no devices were found)"]
+    /// Print information about available devices
+    ///
+    /// # return
+    /// 0 if success
+    /// # return
+    /// -1 for error (eg. no devices were found)
     pub fn gpujpeg_print_devices_info() -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Init CUDA device\n\n @param device_id  CUDA device id (starting at 0)\n @param flags  @ref Flags, e.g. if device info should be printed out (@ref GPUJPEG_INIT_DEV_VERBOSE) or\n               enable OpenGL interoperability (@ref GPUJPEG_OPENGL_INTEROPERABILITY)\n @return 0 if succeeds, otherwise nonzero"]
+    /// Init CUDA device
+    ///
+    /// @param device_id CUDA device id (starting at 0)
+    /// @param flags @ref Flags, e.g. if device info should be printed out (@ref GPUJPEG_INIT_DEV_VERBOSE) or
+    ///              enable OpenGL interoperability (@ref GPUJPEG_OPENGL_INTEROPERABILITY)
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_init_device(
         device_id: ::std::os::raw::c_int,
         flags: ::std::os::raw::c_int,
     ) -> ::std::os::raw::c_int;
 }
-#[doc = "< auto-select the best restart interval"]
+/// auto-select the best restart interval
 pub const restart_int_RESTART_AUTO: restart_int = -1;
-#[doc = "< disabled; CPU Huffman encoder will be used"]
+/// disabled; CPU Huffman encoder will be used
 pub const restart_int_RESTART_NONE: restart_int = 0;
 pub type restart_int = ::std::os::raw::c_int;
-#[doc = "< suppress informative messages (but not warnings and errors)"]
+/// suppress informative messages (but not warnings and errors)
 pub const verbosity_GPUJPEG_LL_QUIET: verbosity = -1;
-#[doc = "< normal verbosity"]
+/// normal verbosity
 pub const verbosity_GPUJPEG_LL_INFO: verbosity = 0;
-#[doc = "< print summary (image size, duration)"]
+/// print summary (image size, duration)
 pub const verbosity_GPUJPEG_LL_STATUS: verbosity = 1;
-#[doc = "< print additional information"]
+/// print additional information
 pub const verbosity_GPUJPEG_LL_VERBOSE: verbosity = 2;
-#[doc = "< print more information, including internal ones"]
+/// print more information, including internal ones
 pub const verbosity_GPUJPEG_LL_DEBUG: verbosity = 3;
-#[doc = "< print maximum of information, including JPEG file internal structure"]
+/// print maximum of information, including JPEG file internal structure
 pub const verbosity_GPUJPEG_LL_DEBUG2: verbosity = 4;
 pub type verbosity = ::std::os::raw::c_int;
-#[doc = " JPEG parameters. This structure should not be initialized only be hand,\n but at first gpujpeg_set_default_parameters should be call and then\n some parameters could be changed."]
+/// JPEG parameters. This structure should not be initialized only be hand,
+/// but at first gpujpeg_set_default_parameters should be call and then
+/// some parameters could be changed.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_parameters {
-    #[doc = " Verbosity level - show more information, collects duration of each phase, etc.\n @sa @ref verbosity for values"]
+    /// Verbosity level - show more information, collects duration of each phase, etc.
+    /// @sa @ref verbosity for values
     pub verbose: ::std::os::raw::c_int,
     pub perf_stats: ::std::os::raw::c_int,
-    #[doc = " Encoder quality level (0-100)"]
+    /// Encoder quality level (0-100)
     pub quality: ::std::os::raw::c_int,
-    #[doc = " Restart interval (0 means that restart interval is disabled and CPU huffman coder is used)\n @sa @rf restart_int for special values"]
+    /// Restart interval (0 means that restart interval is disabled and CPU huffman coder is used)
+    /// @sa @rf restart_int for special values
     pub restart_interval: ::std::os::raw::c_int,
-    #[doc = " Flag which determines if interleaved format of JPEG stream should be used, \"1\" = only\n one scan which includes all color components (e.g. Y Cb Cr Y Cb Cr ...),\n or \"0\" = one scan for each color component (e.g. Y Y Y ..., Cb Cb Cb ..., Cr Cr Cr ...)"]
+    /// Flag which determines if interleaved format of JPEG stream should be used, \"1\" = only
+    /// one scan which includes all color components (e.g. Y Cb Cr Y Cb Cr ...),
+    /// or \"0\" = one scan for each color component (e.g. Y Y Y ..., Cb Cb Cb ..., Cr Cr Cr ...)
     pub interleaved: ::std::os::raw::c_int,
-    #[doc = " Use segment info in stream for fast decoding. The segment info is placed into special\n application headers and contains indexes to beginnings of segments in the stream, so\n the decoder don't have to parse the stream byte-by-byte but he can only read the\n segment info and start decoding. The segment info is presented for each scan, and thus\n the best result is achieved when it is used in combination with \"interleaved = 1\" settings."]
+    /// Use segment info in stream for fast decoding. The segment info is placed into special
+    /// application headers and contains indexes to beginnings of segments in the stream, so
+    /// the decoder don't have to parse the stream byte-by-byte but he can only read the
+    /// segment info and start decoding. The segment info is presented for each scan, and thus
+    /// the best result is achieved when it is used in combination with \"interleaved = 1\" settings.
     pub segment_info: ::std::os::raw::c_int,
-    #[doc = " JPEG image component count; count of valid sampling_factor elements\n use gpujpeg_parameters_chroma_subsampling() to set comp_count and sampling_factor"]
+    /// JPEG image component count; count of valid sampling_factor elements
+    /// use gpujpeg_parameters_chroma_subsampling() to set comp_count and sampling_factor
     pub comp_count: ::std::os::raw::c_int,
-    #[doc = " Sampling factors for each color component inside JPEG stream."]
+    /// Sampling factors for each color component inside JPEG stream.
     pub sampling_factor: [gpujpeg_component_sampling_factor; 4usize],
-    #[doc = " Color space that is used inside JPEG stream = that is carried in JPEG format = to\n which are input data converted. Default value is @ref GPUJPEG_YCBCR_JPEG, changing it\n will change the JPEG format from @ref GPUJPEG_HEADER_JFIF \"JFIF\" (see also @ref\n gpujpeg_encoder_set_jpeg_header).\n - encoding: Set by user\n - decoding: Set by gpujpeg"]
+    /// Color space that is used inside JPEG stream = that is carried in JPEG format = to
+    /// which are input data converted. Default value is @ref GPUJPEG_YCBCR_JPEG, changing it
+    /// will change the JPEG format from @ref GPUJPEG_HEADER_JFIF \"JFIF\" (see also @ref
+    /// gpujpeg_encoder_set_jpeg_header).
+    /// - encoding: Set by user
+    /// - decoding: Set by gpujpeg
     pub color_space_internal: gpujpeg_color_space,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -293,48 +330,61 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_parameters, color_space_internal) - 36usize];
 };
 unsafe extern "C" {
-    #[doc = " Set default parameters for JPEG coder\n\n @param param  Parameters for JPEG coder\n @return void\n @sa gpujpeg_default_parameters"]
+    /// Set default parameters for JPEG coder
+    ///
+    /// @param param Parameters for JPEG coder
+    /// # return
+    /// void
+    /// @sa gpujpeg_default_parameters
     pub fn gpujpeg_set_default_parameters(param: *mut gpujpeg_parameters);
 }
 unsafe extern "C" {
-    #[doc = " alternative to @ref gpujpeg_set_default_parameters allowing simultaneous\n declaration and intialization for convenience."]
+    /// alternative to @ref gpujpeg_set_default_parameters allowing simultaneous
+    /// declaration and intialization for convenience.
     pub fn gpujpeg_default_parameters() -> gpujpeg_parameters;
 }
-#[doc = " Sampling factor for all components"]
+/// Sampling factor for all components
 pub type gpujpeg_sampling_factor_t = u32;
 unsafe extern "C" {
-    #[doc = " Set parameters for using specified chroma subsampling\n @param param       parameters for coder\n @param subsampling one of GPUJPEG_SUBSAMPLING_{444,422,420}"]
+    /// Set parameters for using specified chroma subsampling
+    /// @param param       parameters for coder
+    /// @param subsampling one of GPUJPEG_SUBSAMPLING_{444,422,420}
     pub fn gpujpeg_parameters_chroma_subsampling(
         param: *mut gpujpeg_parameters,
         subsampling: gpujpeg_sampling_factor_t,
     );
 }
 unsafe extern "C" {
-    #[doc = " Returns convenient name for subsampling (4:2:0 etc.). If it cannot be constructed\n returns the format W1xH1:W2xH2:W3xH3."]
+    /// Returns convenient name for subsampling (4:2:0 etc.). If it cannot be constructed
+    /// returns the format W1xH1:W2xH2:W3xH3.
     pub fn gpujpeg_subsampling_get_name(
         comp_count: ::std::os::raw::c_int,
         sampling_factor: *const gpujpeg_component_sampling_factor,
     ) -> *const ::std::os::raw::c_char;
 }
 unsafe extern "C" {
-    #[doc = " returns gpujpeg_sampling_factor_t from textual representation of subsampling\n\n @retval subsampling, GPUJPEG_SUBSAMPLING_UNKNOWN if not recognized"]
+    /// returns gpujpeg_sampling_factor_t from textual representation of subsampling
+    ///
+    /// @retval subsampling, GPUJPEG_SUBSAMPLING_UNKNOWN if not recognized
     pub fn gpujpeg_subsampling_from_name(
         subsampling: *const ::std::os::raw::c_char,
     ) -> gpujpeg_sampling_factor_t;
 }
-#[doc = " Image parameters. This structure should not be initialized only be hand,\n but at first gpujpeg_image_set_default_parameters should be call and then\n some parameters could be changed."]
+/// Image parameters. This structure should not be initialized only be hand,
+/// but at first gpujpeg_image_set_default_parameters should be call and then
+/// some parameters could be changed.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_image_parameters {
-    #[doc = " Image data width"]
+    /// Image data width
     pub width: ::std::os::raw::c_int,
-    #[doc = " Image data height"]
+    /// Image data height
     pub height: ::std::os::raw::c_int,
-    #[doc = " Image data color space"]
+    /// Image data color space
     pub color_space: gpujpeg_color_space,
-    #[doc = " Image data sampling factor"]
+    /// Image data sampling factor
     pub pixel_format: gpujpeg_pixel_format,
-    #[doc = " Number of bytes padded to each row"]
+    /// Number of bytes padded to each row
     pub width_padding: ::std::os::raw::c_int,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -355,56 +405,70 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_image_parameters, width_padding) - 16usize];
 };
 unsafe extern "C" {
-    #[doc = " Set default parameters for JPEG image\n\n @param param  Parameters for image\n @return void"]
+    /// Set default parameters for JPEG image
+    ///
+    /// @param param  Parameters for image
+    /// # return
+    /// void
     pub fn gpujpeg_image_set_default_parameters(param: *mut gpujpeg_image_parameters);
 }
 unsafe extern "C" {
-    #[doc = " alternative to @ref gpujpeg_set_default_image_parameters allowing\nsimultaneous * declaration and intialization for convenience."]
+    /// alternative to @ref gpujpeg_set_default_image_parameters allowing
+    ///simultaneous * declaration and intialization for convenience.
     pub fn gpujpeg_default_image_parameters() -> gpujpeg_image_parameters;
 }
-#[doc = " Unknown image file format"]
+/// Unknown image file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_UNKNOWN: gpujpeg_image_file_format = 0;
-#[doc = " JPEG file format"]
+/// JPEG file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_JPEG: gpujpeg_image_file_format = 1;
-#[doc = " Raw file format\n @note all following formats must be raw"]
+/// Raw file format
+/// # note all following formats must be raw
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_RAW: gpujpeg_image_file_format = 2;
-#[doc = " Gray file format"]
+/// Gray file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_GRAY: gpujpeg_image_file_format = 3;
-#[doc = " RGB file format, simple data format without header [R G B] [R G B] ..."]
+/// RGB file format, simple data format without header [R G B] [R G B] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_RGB: gpujpeg_image_file_format = 4;
-#[doc = " RGBA file format, simple data format without header [R G B A] [R G B A] ..."]
+/// RGBA file format, simple data format without header [R G B A] [R G B A] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_RGBA: gpujpeg_image_file_format = 5;
-#[doc = " RGBA file format, simple data format without header [R G B A] [R G B A] ..."]
+/// RGBA file format, simple data format without header [R G B A] [R G B A] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_BMP: gpujpeg_image_file_format = 6;
-#[doc = " RGBA file format, simple data format without header [R G B A] [R G B A] ..."]
+/// RGBA file format, simple data format without header [R G B A] [R G B A] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_GIF: gpujpeg_image_file_format = 7;
-#[doc = " RGBA file format, simple data format without header [R G B A] [R G B A] ..."]
+/// RGBA file format, simple data format without header [R G B A] [R G B A] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_PNG: gpujpeg_image_file_format = 8;
-#[doc = " RGBA file format, simple data format without header [R G B A] [R G B A] ..."]
+/// RGBA file format, simple data format without header [R G B A] [R G B A] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_TGA: gpujpeg_image_file_format = 9;
-#[doc = " PNM file format"]
+/// PNM file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_PGM: gpujpeg_image_file_format = 10;
-#[doc = " PNM file format"]
+/// PNM file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_PPM: gpujpeg_image_file_format = 11;
-#[doc = " PNM file format"]
+/// PNM file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_PNM: gpujpeg_image_file_format = 12;
-#[doc = " PAM file format"]
+/// PAM file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_PAM: gpujpeg_image_file_format = 13;
-#[doc = " PAM file format"]
+/// PAM file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_Y4M: gpujpeg_image_file_format = 14;
-#[doc = " YUV file format, simple data format without header [Y U V] [Y U V] ...\n @note all following formats must be YUV"]
+/// YUV file format, simple data format without header [Y U V] [Y U V] ...
+/// # note all following formats must be YUV
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_YUV: gpujpeg_image_file_format = 15;
-#[doc = " YUV file format with alpha channel [Y U V A] [Y U V A] ..."]
+/// YUV file format with alpha channel [Y U V A] [Y U V A] ...
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_YUVA: gpujpeg_image_file_format = 16;
-#[doc = " UYVY - packed YUV 4:2:2 with pattern U Y0 V Y1"]
+/// UYVY - packed YUV 4:2:2 with pattern U Y0 V Y1
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_UYVY: gpujpeg_image_file_format = 17;
-#[doc = " i420 file format"]
+/// i420 file format
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_I420: gpujpeg_image_file_format = 18;
-#[doc = " testing (empty) image, that is SW generated"]
+/// testing (empty) image, that is SW generated
 pub const gpujpeg_image_file_format_GPUJPEG_IMAGE_FILE_TST: gpujpeg_image_file_format = 19;
-#[doc = " Image file formats\n\n @note if modifying the enum, check the macros below"]
+/// Image file formats
+///
+/// # note if modifying the enum, check the macros below
 pub type gpujpeg_image_file_format = ::std::os::raw::c_int;
-#[doc = " Encoder/decoder fine-grained statistics with duration of individual steps\n of JPEG compression/decompression. All values are in milliseconds.\n\n @note\n The values are only informative and for debugging only and thus this is\n not considered as a part of a public API."]
+/// Encoder/decoder fine-grained statistics with duration of individual steps
+/// of JPEG compression/decompression. All values are in milliseconds.
+///
+/// # note
+/// The values are only informative and for debugging only and thus this is
+/// not considered as a part of a public API.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_duration_stats {
@@ -443,21 +507,39 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_duration_stats, duration_in_gpu) - 64usize];
 };
 unsafe extern "C" {
-    #[doc = " Get image file format from filename\n\n @param filename  Filename of image file\n @return image_file_format or GPUJPEG_IMAGE_FILE_UNKNOWN if type cannot be determined"]
+    /// Get image file format from filename
+    ///
+    /// @param filename  Filename of image file
+    /// # return
+    /// image_file_format or GPUJPEG_IMAGE_FILE_UNKNOWN if type cannot be determined
     pub fn gpujpeg_image_get_file_format(
         filename: *const ::std::os::raw::c_char,
     ) -> gpujpeg_image_file_format;
 }
 unsafe extern "C" {
-    #[doc = " Sets cuda device.\n\n @param index  Index of the CUDA device to be activated."]
+    /// Sets cuda device.
+    ///
+    /// @param index  Index of the CUDA device to be activated.
     pub fn gpujpeg_set_device(index: ::std::os::raw::c_int);
 }
 unsafe extern "C" {
-    #[doc = " Calculate size for image by parameters\n\n @param param  Image parameters\n @return calculate size"]
+    /// Calculate size for image by parameters
+    ///
+    /// @param param  Image parameters
+    /// # return
+    /// calculate size
     pub fn gpujpeg_image_calculate_size(param: *mut gpujpeg_image_parameters) -> usize;
 }
 unsafe extern "C" {
-    #[doc = " Load image from file\n\n Allocated image must be freed by gpujpeg_image_load_from_file().\n\n @param         filaname    Image filename\n @param[out]    image       Image data buffer allocated as CUDA host buffer\n @param[in,out] image_size  Image data buffer size (can be specified for verification or 0 for retrieval)\n @return 0 if succeeds, otherwise nonzero"]
+    /// Load image from file
+    ///
+    /// Allocated image must be freed by gpujpeg_image_load_from_file().
+    ///
+    /// @param         filaname    Image filename
+    /// @param[out]    image       Image data buffer allocated as CUDA host buffer
+    /// @param[in,out] image_size  Image data buffer size (can be specified for verification or 0 for retrieval)
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_image_load_from_file(
         filename: *const ::std::os::raw::c_char,
         image: *mut *mut u8,
@@ -465,7 +547,22 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Save image to a file\n\n File format is deduced from the filename extension (if any).\n\n Use the extension \"XXX\" (eg. \"image.XXX\") to automatically select the\n extension according to param_image. PNM is used for grayscale or RGB, PAM for\n RGBA, Y4M ottherwise. \"XXX\" placeholder in filename is replaced with used\n extension. It is user responsibility to ensure that @ref filename is writable\n in this case.\n\n @param filaname  Image filename\n @param image  Image data buffer\n @param image_size  Image data buffer size\n @param param_image Image properties (may be NULL)\n @return 0 if succeeds, otherwise nonzero"]
+    /// Save image to a file
+    ///
+    /// File format is deduced from the filename extension (if any).
+    ///
+    /// Use the extension \"XXX\" (eg. \"image.XXX\") to automatically select the
+    /// extension according to param_image. PNM is used for grayscale or RGB, PAM for
+    /// RGBA, Y4M ottherwise. \"XXX\" placeholder in filename is replaced with used
+    /// extension. It is user responsibility to ensure that @ref filename is writable
+    /// in this case.
+    ///
+    /// @param filaname  Image filename
+    /// @param image  Image data buffer
+    /// @param image_size  Image data buffer size
+    /// @param param_image Image properties (may be NULL)
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_image_save_to_file(
         filename: *const ::std::os::raw::c_char,
         image: *const u8,
@@ -474,7 +571,13 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Reads/obtains properties from uncompressed file (PNM etc.)\n\n For files without header (.rgb, .yuv...) it obtains only color space pixel format deduced from file extension.\n\n @retval 0 on success; != 0 on error\n @retval -1 on error\n @retval 1 only color space and  pixel format was deduced from file extension (see above)"]
+    /// Reads/obtains properties from uncompressed file (PNM etc.)
+    ///
+    /// For files without header (.rgb, .yuv...) it obtains only color space pixel format deduced from file extension.
+    ///
+    /// @retval 0 on success; != 0 on error
+    /// @retval -1 on error
+    /// @retval 1 only color space and  pixel format was deduced from file extension (see above)
     pub fn gpujpeg_image_get_properties(
         filename: *const ::std::os::raw::c_char,
         param_image: *mut gpujpeg_image_parameters,
@@ -482,11 +585,20 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Destroys image allocated by GPUJPEG (eg. gpujpeg_image_load_from_file())\n\n @param image  Image data buffer\n @return 0 if succeeds, otherwise nonzero"]
+    /// Destroys image allocated by GPUJPEG (eg. gpujpeg_image_load_from_file())
+    ///
+    /// @param image  Image data buffer
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_image_destroy(image: *mut u8) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Print range info for image samples\n\n @param filename\n @param width\n @param height\n @param sampling_factor"]
+    /// Print range info for image samples
+    ///
+    /// @param filename
+    /// @param width
+    /// @param height
+    /// @param sampling_factor
     pub fn gpujpeg_image_range_info(
         filename: *const ::std::os::raw::c_char,
         width: ::std::os::raw::c_int,
@@ -495,7 +607,17 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
-    #[doc = " Convert image\n\n @note\n currently defunct\n\n @param input\n @param filename\n @param param_image_from\n @param param_image_to\n @return 0 if succeeds, otherwise nonzero"]
+    /// Convert image
+    ///
+    /// # note
+    /// currently defunct
+    ///
+    /// @param input
+    /// @param filename
+    /// @param param_image_from
+    /// @param param_image_to
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_image_convert(
         input: *const ::std::os::raw::c_char,
         output: *const ::std::os::raw::c_char,
@@ -509,15 +631,38 @@ pub struct gpujpeg_opengl_context {
     _unused: [u8; 0],
 }
 unsafe extern "C" {
-    #[doc = " Init OpenGL context\n\n This call is optional - initializes OpenGL context, thus doesn't need to be\n called when context already exists. If not called, however, it may be required\n to run glewInit() from client code prior to running GPUJPEG with GL interoperability.\n\n Returned pointer should be freed with gpujpeg_opengl_destroy() when done.\n\n @param[out] ctx pointer to OpenGL context data (to be passed to gpujpeg_opengl_destroy())\n @return      0  if succeeds, otherwise nonzero\n @return     -1  if initialization fails\n @return     -2  if OpenGL support was not compiled in"]
+    /// Init OpenGL context
+    ///
+    /// This call is optional - initializes OpenGL context, thus doesn't need to be
+    /// called when context already exists. If not called, however, it may be required
+    /// to run glewInit() from client code prior to running GPUJPEG with GL interoperability.
+    ///
+    /// Returned pointer should be freed with gpujpeg_opengl_destroy() when done.
+    ///
+    /// @param[out] ctx pointer to OpenGL context data (to be passed to gpujpeg_opengl_destroy())
+    /// # return
+    ///      0  if succeeds, otherwise nonzero
+    /// # return
+    ///     -1  if initialization fails
+    /// # return
+    ///     -2  if OpenGL support was not compiled in
     pub fn gpujpeg_opengl_init(ctx: *mut *mut gpujpeg_opengl_context) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Destroys OpenGL context created with gpujpeg_opengl_init()\n\n @return NULL if failed, otherwise state pointer"]
+    /// Destroys OpenGL context created with gpujpeg_opengl_init()
+    ///
+    /// # return
+    /// NULL if failed, otherwise state pointer
     pub fn gpujpeg_opengl_destroy(arg1: *mut gpujpeg_opengl_context);
 }
 unsafe extern "C" {
-    #[doc = " Create OpenGL texture\n\n @param width\n @param height\n @param data\n @return nonzero texture id if succeeds, otherwise 0"]
+    /// Create OpenGL texture
+    ///
+    /// @param width
+    /// @param height
+    /// @param data
+    /// # return
+    /// nonzero texture id if succeeds, otherwise 0
     pub fn gpujpeg_opengl_texture_create(
         width: ::std::os::raw::c_int,
         height: ::std::os::raw::c_int,
@@ -525,14 +670,25 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Set data to OpenGL texture\n\n @param texture_id\n @param data\n @return 0 if succeeds, otherwise nonzero"]
+    /// Set data to OpenGL texture
+    ///
+    /// @param texture_id
+    /// @param data
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_opengl_texture_set_data(
         texture_id: ::std::os::raw::c_int,
         data: *mut u8,
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Get data from OpenGL texture\n\n @param texture_id\n @param data\n @param data_size\n @return 0 data if succeeds, otherwise nonzero"]
+    /// Get data from OpenGL texture
+    ///
+    /// @param texture_id
+    /// @param data
+    /// @param data_size
+    /// # return
+    /// 0 data if succeeds, otherwise nonzero
     pub fn gpujpeg_opengl_texture_get_data(
         texture_id: ::std::os::raw::c_int,
         data: *mut u8,
@@ -540,37 +696,40 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Destroy OpenGL texture\n\n @param texture_id"]
+    /// Destroy OpenGL texture
+    ///
+    /// @param texture_id
     pub fn gpujpeg_opengl_texture_destroy(texture_id: ::std::os::raw::c_int);
 }
 pub const gpujpeg_opengl_texture_type_GPUJPEG_OPENGL_TEXTURE_READ: gpujpeg_opengl_texture_type = 1;
 pub const gpujpeg_opengl_texture_type_GPUJPEG_OPENGL_TEXTURE_WRITE: gpujpeg_opengl_texture_type = 2;
-#[doc = " Registered OpenGL texture type"]
+/// Registered OpenGL texture type
 pub type gpujpeg_opengl_texture_type = ::std::os::raw::c_int;
-#[doc = " Represents OpenGL texture that is registered to CUDA,\n thus the device pointer can be acquired."]
+/// Represents OpenGL texture that is registered to CUDA,
+/// thus the device pointer can be acquired.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_opengl_texture {
-    #[doc = " Texture id"]
+    /// Texture id
     pub texture_id: ::std::os::raw::c_int,
-    #[doc = " Texture type"]
+    /// Texture type
     pub texture_type: gpujpeg_opengl_texture_type,
-    #[doc = " Texture width"]
+    /// Texture width
     pub texture_width: ::std::os::raw::c_int,
-    #[doc = " Texture height"]
+    /// Texture height
     pub texture_height: ::std::os::raw::c_int,
-    #[doc = " Texture pixel buffer object type"]
+    /// Texture pixel buffer object type
     pub texture_pbo_type: ::std::os::raw::c_int,
-    #[doc = " Texture pixel buffer object id"]
+    /// Texture pixel buffer object id
     pub texture_pbo_id: ::std::os::raw::c_int,
-    #[doc = " Texture PBO resource for CUDA"]
+    /// Texture PBO resource for CUDA
     pub texture_pbo_resource: *mut cudaGraphicsResource,
-    #[doc = " Texture callbacks parameter"]
+    /// Texture callbacks parameter
     pub texture_callback_param: *mut ::std::os::raw::c_void,
-    #[doc = " Texture callback for attaching OpenGL context (by default not used)"]
+    /// Texture callback for attaching OpenGL context (by default not used)
     pub texture_callback_attach_opengl:
         ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void)>,
-    #[doc = " Texture callback for detaching OpenGL context (by default not used)"]
+    /// Texture callback for detaching OpenGL context (by default not used)
     pub texture_callback_detach_opengl:
         ::std::option::Option<unsafe extern "C" fn(param: *mut ::std::os::raw::c_void)>,
 }
@@ -601,35 +760,55 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_opengl_texture, texture_callback_detach_opengl) - 48usize];
 };
 unsafe extern "C" {
-    #[doc = " Register OpenGL texture to CUDA\n\n @param texture_id\n @return allocated registred texture structure"]
+    /// Register OpenGL texture to CUDA
+    ///
+    /// @param texture_id
+    /// # return
+    /// allocated registred texture structure
     pub fn gpujpeg_opengl_texture_register(
         texture_id: ::std::os::raw::c_int,
         texture_type: gpujpeg_opengl_texture_type,
     ) -> *mut gpujpeg_opengl_texture;
 }
 unsafe extern "C" {
-    #[doc = " Unregister OpenGL texture from CUDA. Deallocated given\n structure.\n\n @param texture"]
+    /// Unregister OpenGL texture from CUDA. Deallocated given
+    /// structure.
+    ///
+    /// @param texture
     pub fn gpujpeg_opengl_texture_unregister(texture: *mut gpujpeg_opengl_texture);
 }
 unsafe extern "C" {
-    #[doc = " Map registered OpenGL texture to CUDA and return\n device pointer to the texture data\n\n @param texture\n @param data_size  Data size in returned buffer\n @param copy_from_texture  Specifies whether memory copy from texture\n                           should be performed"]
+    /// Map registered OpenGL texture to CUDA and return
+    /// device pointer to the texture data
+    ///
+    /// @param texture
+    /// @param data_size  Data size in returned buffer
+    /// @param copy_from_texture  Specifies whether memory copy from texture
+    ///                           should be performed
     pub fn gpujpeg_opengl_texture_map(
         texture: *mut gpujpeg_opengl_texture,
         data_size: *mut usize,
     ) -> *mut u8;
 }
 unsafe extern "C" {
-    #[doc = " Unmap registered OpenGL texture from CUDA and the device\n pointer is no longer useable.\n\n @param texture\n @param copy_to_texture  Specifies whether memoryc copy to texture\n                         should be performed"]
+    /// Unmap registered OpenGL texture from CUDA and the device
+    /// pointer is no longer useable.
+    ///
+    /// @param texture
+    /// @param copy_to_texture  Specifies whether memoryc copy to texture
+    ///                         should be performed
     pub fn gpujpeg_opengl_texture_unmap(texture: *mut gpujpeg_opengl_texture);
 }
 unsafe extern "C" {
-    #[doc = " Get color space name\n\n @param color_space"]
+    /// Get color space name
+    ///
+    /// @param color_space
     pub fn gpujpeg_color_space_get_name(
         color_space: gpujpeg_color_space,
     ) -> *const ::std::os::raw::c_char;
 }
 unsafe extern "C" {
-    #[doc = " Returns pixel format by string name"]
+    /// Returns pixel format by string name
     pub fn gpujpeg_pixel_format_by_name(
         name: *const ::std::os::raw::c_char,
     ) -> gpujpeg_pixel_format;
@@ -638,23 +817,23 @@ unsafe extern "C" {
     pub fn gpujpeg_print_pixel_formats();
 }
 unsafe extern "C" {
-    #[doc = " Returns color space by string name"]
+    /// Returns color space by string name
     pub fn gpujpeg_color_space_by_name(name: *const ::std::os::raw::c_char) -> gpujpeg_color_space;
 }
 unsafe extern "C" {
-    #[doc = " Returns number of color components in pixel format"]
+    /// Returns number of color components in pixel format
     pub fn gpujpeg_pixel_format_get_comp_count(
         pixel_format: gpujpeg_pixel_format,
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Returns name of the pixel format"]
+    /// Returns name of the pixel format
     pub fn gpujpeg_pixel_format_get_name(
         pixel_format: gpujpeg_pixel_format,
     ) -> *const ::std::os::raw::c_char;
 }
 unsafe extern "C" {
-    #[doc = " Returns true if a pixel format is planar"]
+    /// Returns true if a pixel format is planar
     pub fn gpujpeg_pixel_format_is_planar(
         pixel_format: gpujpeg_pixel_format,
     ) -> ::std::os::raw::c_int;
@@ -667,25 +846,25 @@ unsafe extern "C" {
 pub struct gpujpeg_encoder {
     _unused: [u8; 0],
 }
-#[doc = " Encoder will use custom input buffer"]
+/// Encoder will use custom input buffer
 pub const gpujpeg_encoder_input_type_GPUJPEG_ENCODER_INPUT_IMAGE: gpujpeg_encoder_input_type = 0;
-#[doc = " Encoder will use OpenGL Texture PBO Resource as input buffer"]
+/// Encoder will use OpenGL Texture PBO Resource as input buffer
 pub const gpujpeg_encoder_input_type_GPUJPEG_ENCODER_INPUT_OPENGL_TEXTURE:
     gpujpeg_encoder_input_type = 1;
-#[doc = " Encoder will use custom GPU input buffer"]
+/// Encoder will use custom GPU input buffer
 pub const gpujpeg_encoder_input_type_GPUJPEG_ENCODER_INPUT_GPU_IMAGE: gpujpeg_encoder_input_type =
     2;
-#[doc = " Encoder input type"]
+/// Encoder input type
 pub type gpujpeg_encoder_input_type = ::std::os::raw::c_int;
-#[doc = " Encoder input structure"]
+/// Encoder input structure
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_encoder_input {
-    #[doc = " Output type"]
+    /// Output type
     pub type_: gpujpeg_encoder_input_type,
-    #[doc = " Image data"]
+    /// Image data
     pub image: *mut u8,
-    #[doc = " Registered OpenGL Texture"]
+    /// Registered OpenGL Texture
     pub texture: *mut gpujpeg_opengl_texture,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -701,40 +880,71 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_encoder_input, texture) - 16usize];
 };
 unsafe extern "C" {
-    #[doc = " Set encoder input to image data\n\n @param encoder_input  Encoder input structure\n @param image  Input image data\n @return void\n @sa gpujpeg_encoder_input_image"]
+    /// Set encoder input to image data
+    ///
+    /// @param encoder_input  Encoder input structure
+    /// @param image  Input image data
+    /// # return
+    /// void
+    /// @sa gpujpeg_encoder_input_image
     pub fn gpujpeg_encoder_input_set_image(input: *mut gpujpeg_encoder_input, image: *mut u8);
 }
 unsafe extern "C" {
-    #[doc = " Set encoder input to GPU image data\n\n @param encoder_input  Encoder input structure\n @param image GPU image data\n @return void\n @sa gpujpeg_encoder_input_gpu_image"]
+    /// Set encoder input to GPU image data
+    ///
+    /// @param encoder_input  Encoder input structure
+    /// @param image GPU image data
+    /// # return
+    /// void
+    /// @sa gpujpeg_encoder_input_gpu_image
     pub fn gpujpeg_encoder_input_set_gpu_image(input: *mut gpujpeg_encoder_input, image: *mut u8);
 }
 unsafe extern "C" {
-    #[doc = " Set encoder input to OpenGL texture\n\n @param encoder_input  Encoder input structure\n @param texture_id  OpenGL texture id\n @return void\n @sa gpujpeg_encoder_input_set_texture"]
+    /// Set encoder input to OpenGL texture
+    ///
+    /// @param encoder_input  Encoder input structure
+    /// @param texture_id  OpenGL texture id
+    /// # return
+    /// void
+    /// @sa gpujpeg_encoder_input_set_texture
     pub fn gpujpeg_encoder_input_set_texture(
         input: *mut gpujpeg_encoder_input,
         texture: *mut gpujpeg_opengl_texture,
     );
 }
 unsafe extern "C" {
-    #[doc = " alternative to @ref gpujpeg_encoder_input_set_image returning the struct as a return value"]
+    /// alternative to @ref gpujpeg_encoder_input_set_image returning the struct as a return value
     pub fn gpujpeg_encoder_input_image(image: *mut u8) -> gpujpeg_encoder_input;
 }
 unsafe extern "C" {
-    #[doc = " alternative to @ref gpujpeg_encoder_input_set_gpu_image returning the struct as a return value"]
+    /// alternative to @ref gpujpeg_encoder_input_set_gpu_image returning the struct as a return value
     pub fn gpujpeg_encoder_input_gpu_image(image: *mut u8) -> gpujpeg_encoder_input;
 }
 unsafe extern "C" {
-    #[doc = " alternative to @ref gpujpeg_encoder_input_set_texture returning the struct as a return value"]
+    /// alternative to @ref gpujpeg_encoder_input_set_texture returning the struct as a return value
     pub fn gpujpeg_encoder_input_texture(
         texture: *mut gpujpeg_opengl_texture,
     ) -> gpujpeg_encoder_input;
 }
 unsafe extern "C" {
-    #[doc = " Create JPEG encoder\n\n @param stream CUDA stream to be used, may be cudaStreamDefault (0x00)\n @return encoder structure if succeeds, otherwise NULL"]
+    /// Create JPEG encoder
+    ///
+    /// @param stream CUDA stream to be used, may be cudaStreamDefault (0x00)
+    /// # return
+    /// encoder structure if succeeds, otherwise NULL
     pub fn gpujpeg_encoder_create(stream: cudaStream_t) -> *mut gpujpeg_encoder;
 }
 unsafe extern "C" {
-    #[doc = " Compute maximum number of image pixels (width x height) which can be encoded by given memory size.\n\n @param encoder\n @param param\n @param param_image\n @param image_input_type\n @param memory_size\n @param max_pixels\n @return size of used device memory in bytes if succeeds, otherwise 0"]
+    /// Compute maximum number of image pixels (width x height) which can be encoded by given memory size.
+    ///
+    /// @param encoder
+    /// @param param
+    /// @param param_image
+    /// @param image_input_type
+    /// @param memory_size
+    /// @param max_pixels
+    /// # return
+    /// size of used device memory in bytes if succeeds, otherwise 0
     pub fn gpujpeg_encoder_max_pixels(
         param: *mut gpujpeg_parameters,
         param_image: *mut gpujpeg_image_parameters,
@@ -744,7 +954,15 @@ unsafe extern "C" {
     ) -> usize;
 }
 unsafe extern "C" {
-    #[doc = " Compute maximum size of device memory which will be used for encoding image with given number of pixels.\n\n @param encoder\n @param param\n @param param_image\n @param image_input_type\n @param max_pixels\n @return size of required device memory in bytes if succeeds, otherwise 0"]
+    /// Compute maximum size of device memory which will be used for encoding image with given number of pixels.
+    ///
+    /// @param encoder
+    /// @param param
+    /// @param param_image
+    /// @param image_input_type
+    /// @param max_pixels
+    /// # return
+    /// size of required device memory in bytes if succeeds, otherwise 0
     pub fn gpujpeg_encoder_max_memory(
         param: *mut gpujpeg_parameters,
         param_image: *mut gpujpeg_image_parameters,
@@ -753,7 +971,14 @@ unsafe extern "C" {
     ) -> usize;
 }
 unsafe extern "C" {
-    #[doc = " Pre-allocate all encoding buffers for given image pixels.\n\n @param encoder\n @param param\n @param param_image\n @param image_input_type\n @return 0 if succeeds, otherwise nonzero"]
+    /// Pre-allocate all encoding buffers for given image pixels.
+    ///
+    /// @param encoder
+    /// @param param
+    /// @param param_image
+    /// @param image_input_type
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_encoder_allocate(
         encoder: *mut gpujpeg_encoder,
         param: *const gpujpeg_parameters,
@@ -762,7 +987,18 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Compress image by encoder\n\n @param encoder  Encoder structure\n @param param  Parameters for coder\n @param param_image  Parameters for image data\n @param image  Source image data\n @param[out] image_compressed  Pointer to variable where compressed image data buffer will be placed.\n                               Returned host buffer is owned by encoder and must not be freed by the caller.\n                               Buffer is valid until next gpujpeg_encoder_encode() call.\n @param[out] image_compressed_size  Pointer to variable where compressed image size will be placed.\n @return 0 if succeeds, otherwise nonzero"]
+    /// Compress image by encoder
+    ///
+    /// @param encoder  Encoder structure
+    /// @param param  Parameters for coder
+    /// @param param_image  Parameters for image data
+    /// @param image  Source image data
+    /// @param[out] image_compressed  Pointer to variable where compressed image data buffer will be placed.
+    ///                               Returned host buffer is owned by encoder and must not be freed by the caller.
+    ///                               Buffer is valid until next gpujpeg_encoder_encode() call.
+    /// @param[out] image_compressed_size  Pointer to variable where compressed image size will be placed.
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_encoder_encode(
         encoder: *mut gpujpeg_encoder,
         param: *const gpujpeg_parameters,
@@ -773,28 +1009,42 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Returns duration statistics for last encoded image\n @return 0 if succeeds, otherwise nonzero\n @note\n The values are only informative and for debugging only and thus this is\n not considered as a part of a public API.\n @deprecated\n The encoder now prints the statistics to stdout if gpujpeg_parameters.perf_stats is set.\n May be removed in future versions - please report if using this function."]
+    /// Returns duration statistics for last encoded image
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
+    /// # note
+    /// The values are only informative and for debugging only and thus this is
+    /// not considered as a part of a public API.
+    /// @deprecated
+    /// The encoder now prints the statistics to stdout if gpujpeg_parameters.perf_stats is set.
+    /// May be removed in future versions - please report if using this function.
     pub fn gpujpeg_encoder_get_stats(
         encoder: *mut gpujpeg_encoder,
         stats: *mut gpujpeg_duration_stats,
     ) -> ::std::os::raw::c_int;
 }
-#[doc = "< for 1 or 3 channel @ref GPUJPEG_YCBCR_JPEG @ref GPUJPEG_HEADER_JFIF, for @ref\n< GPUJPEG_RGB @ref GPUJPEG_HEADER_ADOBE, @ref GPUJPEG_HEADER_SPIFF otherwise"]
+/// for 1 or 3 channel @ref GPUJPEG_YCBCR_JPEG @ref GPUJPEG_HEADER_JFIF, for @ref
+/// GPUJPEG_RGB @ref GPUJPEG_HEADER_ADOBE, @ref GPUJPEG_HEADER_SPIFF otherwise
 pub const gpujpeg_header_type_GPUJPEG_HEADER_DEFAULT: gpujpeg_header_type = 0;
 pub const gpujpeg_header_type_GPUJPEG_HEADER_JFIF: gpujpeg_header_type = 1;
 pub const gpujpeg_header_type_GPUJPEG_HEADER_SPIFF: gpujpeg_header_type = 2;
-#[doc = "< Adobe APP8 header"]
+/// Adobe APP8 header
 pub const gpujpeg_header_type_GPUJPEG_HEADER_ADOBE: gpujpeg_header_type = 4;
 pub type gpujpeg_header_type = ::std::os::raw::c_int;
 unsafe extern "C" {
-    #[doc = " Forces JPEG header to be emitted.\n\n Header type should be capable of describing the resulting JPEG, eg. JFIF only for BT.601\n full-scale YCbCr images. If not, resulting JPEG image may be incompatible with decoders."]
+    /// Forces JPEG header to be emitted.
+    ///
+    /// Header type should be capable of describing the resulting JPEG, eg. JFIF only for BT.601
+    /// full-scale YCbCr images. If not, resulting JPEG image may be incompatible with decoders.
     pub fn gpujpeg_encoder_set_jpeg_header(
         encoder: *mut gpujpeg_encoder,
         header_type: gpujpeg_header_type,
     );
 }
 unsafe extern "C" {
-    #[doc = " Suggests optimal restart interval to be used for given param_image balancing both image\n size and performance.\n @param subsampling 444 422 or 420"]
+    /// Suggests optimal restart interval to be used for given param_image balancing both image
+    /// size and performance.
+    /// @param subsampling 444 422 or 420
     pub fn gpujpeg_encoder_suggest_restart_interval(
         param_image: *const gpujpeg_image_parameters,
         subsampling: gpujpeg_sampling_factor_t,
@@ -803,7 +1053,9 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " sets encoder option\n @retval GPUJPEG_NOERR  option was sucessfully set\n @retval GPUJPEG_ERROR  invalid argument passed"]
+    /// sets encoder option
+    /// @retval GPUJPEG_NOERR  option was sucessfully set
+    /// @retval GPUJPEG_ERROR  invalid argument passed
     pub fn gpujpeg_encoder_set_option(
         encoder: *mut gpujpeg_encoder,
         opt: *const ::std::os::raw::c_char,
@@ -811,7 +1063,11 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Destory JPEG encoder\n\n @param encoder  Encoder structure\n @return 0 if succeeds, otherwise nonzero"]
+    /// Destory JPEG encoder
+    ///
+    /// @param encoder  Encoder structure
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_encoder_destroy(encoder: *mut gpujpeg_encoder) -> ::std::os::raw::c_int;
 }
 #[repr(C)]
@@ -819,36 +1075,36 @@ unsafe extern "C" {
 pub struct gpujpeg_decoder {
     _unused: [u8; 0],
 }
-#[doc = " Decoder will use it's internal output buffer"]
+/// Decoder will use it's internal output buffer
 pub const gpujpeg_decoder_output_type_GPUJPEG_DECODER_OUTPUT_INTERNAL_BUFFER:
     gpujpeg_decoder_output_type = 0;
-#[doc = " Decoder will use custom output buffer"]
+/// Decoder will use custom output buffer
 pub const gpujpeg_decoder_output_type_GPUJPEG_DECODER_OUTPUT_CUSTOM_BUFFER:
     gpujpeg_decoder_output_type = 1;
-#[doc = " Decoder will use OpenGL Texture PBO Resource as output buffer"]
+/// Decoder will use OpenGL Texture PBO Resource as output buffer
 pub const gpujpeg_decoder_output_type_GPUJPEG_DECODER_OUTPUT_OPENGL_TEXTURE:
     gpujpeg_decoder_output_type = 2;
-#[doc = " Decoder will use internal CUDA buffer as output buffer"]
+/// Decoder will use internal CUDA buffer as output buffer
 pub const gpujpeg_decoder_output_type_GPUJPEG_DECODER_OUTPUT_CUDA_BUFFER:
     gpujpeg_decoder_output_type = 3;
-#[doc = " Decoder will use custom CUDA buffer as output buffer"]
+/// Decoder will use custom CUDA buffer as output buffer
 pub const gpujpeg_decoder_output_type_GPUJPEG_DECODER_OUTPUT_CUSTOM_CUDA_BUFFER:
     gpujpeg_decoder_output_type = 4;
-#[doc = " Decoder output type"]
+/// Decoder output type
 pub type gpujpeg_decoder_output_type = ::std::os::raw::c_int;
-#[doc = " Decoder output structure"]
+/// Decoder output structure
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_decoder_output {
-    #[doc = " Output type"]
+    /// Output type
     pub type_: gpujpeg_decoder_output_type,
-    #[doc = " Decompressed data"]
+    /// Decompressed data
     pub data: *mut u8,
-    #[doc = " Decompressed data size"]
+    /// Decompressed data size
     pub data_size: usize,
-    #[doc = " Decoded image parameters"]
+    /// Decoded image parameters
     pub param_image: gpujpeg_image_parameters,
-    #[doc = " OpenGL texture"]
+    /// OpenGL texture
     pub texture: *mut gpujpeg_opengl_texture,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -867,17 +1123,19 @@ const _: () = {
     ["Offset of field: gpujpeg_decoder_output::texture"]
         [::std::mem::offset_of!(gpujpeg_decoder_output, texture) - 48usize];
 };
-#[doc = " @sa gpujpeg_parametes\n call gpujpeg_decoder_default_init_parameters() to initialize"]
+/// @sa gpujpeg_parametes
+/// call gpujpeg_decoder_default_init_parameters() to initialize"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct gpujpeg_decoder_init_parameters {
-    #[doc = "< stream CUDA stream to be used, cudaStreamDefault (0x00) is default"]
+    /// stream CUDA stream to be used, cudaStreamDefault (0x00) is default
     pub stream: cudaStream_t,
-    #[doc = "< verbosity level (-1 - quiet, 0 - normal, 1 - verbose)"]
+    /// verbosity level (-1 - quiet, 0 - normal, 1 - verbose)
     pub verbose: ::std::os::raw::c_int,
-    #[doc = "< print performance statistics on output"]
+    /// print performance statistics on output
     pub perf_stats: bool,
-    #[doc = "< if FFmpeg specific COM marker \"CS=ITU601\" present, interpret the data as\n< limited-range BT.709 not BT.601"]
+    /// if FFmpeg specific COM marker \"CS=ITU601\" present, interpret the data as
+    /// limited-range BT.709 not BT.601
     pub ff_cs_itu601_is_709: bool,
 }
 #[allow(clippy::unnecessary_operation, clippy::identity_op)]
@@ -896,49 +1154,99 @@ const _: () = {
         [::std::mem::offset_of!(gpujpeg_decoder_init_parameters, ff_cs_itu601_is_709) - 13usize];
 };
 unsafe extern "C" {
-    #[doc = " Set default parameters to decoder output structure\n\n @param output  Decoder output structure\n @return void"]
+    /// Set default parameters to decoder output structure
+    ///
+    /// @param output  Decoder output structure
+    /// # return
+    /// void
     pub fn gpujpeg_decoder_output_set_default(output: *mut gpujpeg_decoder_output);
 }
 unsafe extern "C" {
-    #[doc = " Setup decoder output to custom buffer\n\n @param output        Decoder output structure\n @param custom_buffer Custom buffer\n @return void"]
+    /// Setup decoder output to custom buffer
+    ///
+    /// @param output        Decoder output structure
+    /// @param custom_buffer Custom buffer
+    /// # return
+    /// void
     pub fn gpujpeg_decoder_output_set_custom(
         output: *mut gpujpeg_decoder_output,
         custom_buffer: *mut u8,
     );
 }
 unsafe extern "C" {
-    #[doc = " Set decoder output to OpenGL texture\n\n @param output  Decoder output structure\n @return void"]
+    /// Set decoder output to OpenGL texture
+    ///
+    /// @param output  Decoder output structure
+    /// # return
+    /// void
     pub fn gpujpeg_decoder_output_set_texture(
         output: *mut gpujpeg_decoder_output,
         texture: *mut gpujpeg_opengl_texture,
     );
 }
 unsafe extern "C" {
-    #[doc = " Sets output to CUDA buffer\n\n @param output  Decoder output structure"]
+    /// Sets output to CUDA buffer
+    ///
+    /// @param output  Decoder output structure
     pub fn gpujpeg_decoder_output_set_cuda_buffer(output: *mut gpujpeg_decoder_output);
 }
 unsafe extern "C" {
-    #[doc = " Setup decoder output to custom CUDA buffer\n\n @param output          Decoder output structure\n @param d_custom_buffer Custom buffer in CUDA device memory\n @return void"]
+    /// Setup decoder output to custom CUDA buffer
+    ///
+    /// @param output          Decoder output structure
+    /// @param d_custom_buffer Custom buffer in CUDA device memory
+    /// # return
+    /// void
     pub fn gpujpeg_decoder_output_set_custom_cuda(
         output: *mut gpujpeg_decoder_output,
         d_custom_buffer: *mut u8,
     );
 }
 unsafe extern "C" {
-    #[doc = " Create JPEG decoder\n\n @sa gpujpeg_decoder_create_with_params\n @param stream CUDA stream to be used, may be cudaStreamDefault (0x00)\n @return decoder structure if succeeds, otherwise NULL"]
+    /// Create JPEG decoder
+    ///
+    /// @sa gpujpeg_decoder_create_with_params
+    /// @param stream CUDA stream to be used, may be cudaStreamDefault (0x00)
+    /// # return
+    /// decoder structure if succeeds, otherwise NULL
     pub fn gpujpeg_decoder_create(stream: cudaStream_t) -> *mut gpujpeg_decoder;
 }
 unsafe extern "C" {
     pub fn gpujpeg_decoder_default_init_parameters() -> gpujpeg_decoder_init_parameters;
 }
+
 unsafe extern "C" {
-    #[doc = " @brief Create JPEG decoder - extended versison\n\n This version is an alternative to gpujpeg_decoder_create() allowing setting more parameters during initialization\n (verbose, perf_stats). Previously, if those needed to be set, it the decoder must have been configured with\n gpujpeg_decoder_init().\n\n @sa gpujpeg_decoder_create\n @return decoder structure if succeeds, otherwise NULL"]
+    /// @brief Create JPEG decoder - extended versison
+
+    /// This version is an alternative to gpujpeg_decoder_create() allowing setting more parameters during initialization
+    /// (verbose, perf_stats). Previously, if those needed to be set, it the decoder must have been configured with
+    /// gpujpeg_decoder_init().
+    ///
+    /// @sa gpujpeg_decoder_create
+    /// # return
+    /// decoder structure if succeeds, otherwise NULL
     pub fn gpujpeg_decoder_create_with_params(
         params: *const gpujpeg_decoder_init_parameters,
     ) -> *mut gpujpeg_decoder;
 }
 unsafe extern "C" {
-    #[doc = " Init JPEG decoder for specific image properties\n\n Following properties are relevant:\n - image dimensions, commonent count\n - output pixel format that will be requested\n - interleaving, restart interval, color_space_internal (usually GPUJPEG_YCBCR_BT601_256LVLS)\n - correct subsampling setting\n\n @note\n Doesn't need to be called from user code, buffers will be initialized automatically according to\n image properties during decompression.\n\n @param decoder  Decoder structure\n @param[in] param        Parameters for coder, pointed structure is copied\n @param[in] param_image  Parameters for image data, pointed structure is copied\n @return 0 if succeeds, otherwise nonzero"]
+    /// Init JPEG decoder for specific image properties
+    ///
+    /// Following properties are relevant:
+    /// - image dimensions, commonent count
+    /// - output pixel format that will be requested
+    /// - interleaving, restart interval, color_space_internal (usually GPUJPEG_YCBCR_BT601_256LVLS)
+    /// - correct subsampling setting
+    ///
+    /// # note
+    /// Doesn't need to be called from user code, buffers will be initialized automatically according to
+    /// image properties during decompression.
+    ///
+    /// @param decoder  Decoder structure
+    /// @param[in] param        Parameters for coder, pointed structure is copied
+    /// @param[in] param_image  Parameters for image data, pointed structure is copied
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_decoder_init(
         decoder: *mut gpujpeg_decoder,
         param: *const gpujpeg_parameters,
@@ -946,7 +1254,15 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Decompress image by decoder\n\n @param decoder  Decoder structure\n @param image  Source image data\n @param image_size  Source image data size\n @param image_decompressed  Pointer to variable where decompressed image data buffer will be placed\n @param image_decompressed_size  Pointer to variable where decompressed image size will be placed\n @return @ref Errors"]
+    /// Decompress image by decoder
+    ///
+    /// @param decoder  Decoder structure
+    /// @param image  Source image data
+    /// @param image_size  Source image data size
+    /// @param image_decompressed  Pointer to variable where decompressed image data buffer will be placed
+    /// @param image_decompressed_size  Pointer to variable where decompressed image size will be placed
+    /// # return
+    /// @ref Errors
     pub fn gpujpeg_decoder_decode(
         decoder: *mut gpujpeg_decoder,
         image: *mut u8,
@@ -955,18 +1271,41 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Returns duration statistics for last decoded image\n @return 0 if succeeds, otherwise nonzero\n @note\n The values are only informative and for debugging only and thus this is\n not considered as a part of a public API.\n @deprecated\n The decoder now prints the statistics to stdout if gpujpeg_parameters.perf_stats is set.\n May be removed in future versions - please report if using this function."]
+    /// Returns duration statistics for last decoded image
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
+    /// # note
+    /// The values are only informative and for debugging only and thus this is
+    /// not considered as a part of a public API.
+    /// @deprecated
+    /// The decoder now prints the statistics to stdout if gpujpeg_parameters.perf_stats is set.
+    /// May be removed in future versions - please report if using this function.
     pub fn gpujpeg_decoder_get_stats(
         decoder: *mut gpujpeg_decoder,
         stats: *mut gpujpeg_duration_stats,
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Destory JPEG decoder\n\n @param decoder  Decoder structure\n @return 0 if succeeds, otherwise nonzero"]
+    /// Destory JPEG decoder
+    ///
+    /// @param decoder  Decoder structure
+    /// # return
+    /// 0 if succeeds, otherwise nonzero
     pub fn gpujpeg_decoder_destroy(decoder: *mut gpujpeg_decoder) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " Sets output format\n\n If not called, @ref GPUJPEG_CS_DEFAULT and @ref GPUJPEG_PIXFMT_AUTODETECT\n are used.\n\n @param decoder         Decoder structure\n @param color_space     Requested output color space,\n                        use @ref GPUJPEG_NONE to keep JPEG internal color space;\n                        special value @ref GPUJPEG_CS_DEFAULT to decode RGB\n                        (or luma for grayscale)\n @param sampling_factor Requestd color sampling factor; special values\n                        @ref decoder_pixfmt_placeholders can be used"]
+    /// Sets output format
+    ///
+    /// If not called, @ref GPUJPEG_CS_DEFAULT and @ref GPUJPEG_PIXFMT_AUTODETECT
+    /// are used.
+    ///
+    /// @param decoder         Decoder structure
+    /// @param color_space     Requested output color space,
+    ///                        use @ref GPUJPEG_NONE to keep JPEG internal color space;
+    ///                        special value @ref GPUJPEG_CS_DEFAULT to decode RGB
+    ///                        (or luma for grayscale)
+    /// @param sampling_factor Requestd color sampling factor; special values
+    ///                        @ref decoder_pixfmt_placeholders can be used
     pub fn gpujpeg_decoder_set_output_format(
         decoder: *mut gpujpeg_decoder,
         color_space: gpujpeg_color_space,
@@ -974,7 +1313,7 @@ unsafe extern "C" {
     );
 }
 unsafe extern "C" {
-    #[doc = " @copydoc gpujpeg_reader_get_image_info"]
+    /// @copydoc gpujpeg_reader_get_image_info
     pub fn gpujpeg_decoder_get_image_info(
         image: *mut u8,
         image_size: usize,
@@ -984,14 +1323,16 @@ unsafe extern "C" {
     ) -> ::std::os::raw::c_int;
 }
 unsafe extern "C" {
-    #[doc = " sets decoder option\n @retval GPUJPEG_NOERR  option was sucessfully set\n @retval GPUJPEG_ERROR  invalid argument passed"]
+    /// sets decoder option
+    /// @retval GPUJPEG_NOERR  option was sucessfully set
+    /// @retval GPUJPEG_ERROR  invalid argument passed
     pub fn gpujpeg_decoder_set_option(
         decoder: *mut gpujpeg_decoder,
         opt: *const ::std::os::raw::c_char,
         val: *const ::std::os::raw::c_char,
     ) -> ::std::os::raw::c_int;
 }
-#[doc = " Texture PBO resource for CUDA"]
+/// Texture PBO resource for CUDA
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct cudaGraphicsResource {
