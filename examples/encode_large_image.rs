@@ -11,8 +11,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let param_ptr = &param as *const gpujpeg_parameters as *mut gpujpeg_parameters;
 
     let mut param_image = unsafe { gpujpeg_default_image_parameters() };
-    param_image.width = 34270;
-    param_image.height = 22931;
+    param_image.width = 9072;
+    param_image.height = 50000;
     param_image.color_space = gpujpeg_color_space_GPUJPEG_YCBCR_JPEG; // GPUJPEG_COLOR_SPACE_YCBCR;
     param_image.pixel_format = gpujpeg_pixel_format_GPUJPEG_U8;
 
@@ -34,7 +34,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let _size = unsafe { gpujpeg_image_calculate_size(param_image_ptr) };
 
     let origin_mat = opencv::imgcodecs::imread(
-        "test_image/Plushies-Summoner.jpg",
+        "test_image/large-2.jpeg",
         opencv::imgcodecs::IMREAD_GRAYSCALE,
     )?;
     let start = Instant::now();
@@ -65,7 +65,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     // buf_copy.copy_from_slice(buf);
     println!("out size:{}", out_size);
     assert!(!buf.is_empty(), "Encoded buffer is empty");
-    let mut out_file = File::create("test_image/large-2.jpeg")?;
+    let mut out_file = File::create("test_image/large-22.jpeg")?;
     out_file.write_all(buf)?;
     out_file.flush()?;
     let elapsed = start.elapsed();
