@@ -1,6 +1,6 @@
 [package]
 name = "rust-gpujpeg"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "Rust bindings for GPU JPEG library"
 license-file = "LICENSE"
