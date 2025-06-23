@@ -26,3 +26,7 @@ opencv = { version = "0.94.4", features = [
 [features]
 default = []
 generate-bindings = []
+
+[[example]]
+name = "encode_large_image"
+path = "examples/encode_large_image.rs"
